@@ -60,6 +60,31 @@
 }
 
 {
+  /* 
+  仔细观察OPERATES里的值是什么不重要，只要互不相等就行
+  所以推荐使用symbol
+*/
+
+  const OPERATES = {
+    LAST: "last",
+    NEXT: "next",
+    SAVETOLIST: "saveToList",
+    SAVETODETAIL: "saveToDetail",
+    CANCEL: "cancel",
+    FREE: "free"
+  };
+
+  const OPERATES = {
+    LAST: Symbol(),
+    NEXT: Symbol(),
+    SAVETOLIST: Symbol(),
+    SAVETODETAIL: Symbol(),
+    CANCEL: Symbol(),
+    FREE: Symbol()
+  };
+}
+
+{
   // symbol变量互不相等,所以用作对象属性时，能保证不会有重复属性
   let mySymbol = Symbol();
 
@@ -80,30 +105,38 @@
   a[mySymbol]; // "Hello!"
 }
 
+{
+  /* 
+    当作为对象key值时，传统的
+    for...in、Object.keys()、Object.getOwnPropertyNames()、JSON.stringify()
+    都不会返回Symbol属性名
+    这时可用Object.getOwnPropertySymbols获取
+  */
+
+  const a = Symbol("a");
+  const b = Symbol("b");
+  let obj = {
+    [a]: "Hello!",
+    [b]: "world!"
+  };
+
+  const objectSymbols = Object.getOwnPropertySymbols(obj);
+
+  console.log("objectSymbols :", objectSymbols); // [Symbol(a), Symbol(b)]
+
+  // 另外，Reflect.ownKeys方法可以返回所有类型的键名，包括常规键名和 Symbol 键名。
+  Reflect.ownKeys(obj); // [Symbol(a), Symbol(b)]
+}
+
 
 {
   /* 
-  仔细观察OPERATES里的值是什么不重要，只要互不相等就行
-  所以推荐使用symbol
-*/
+    Symbol.for()返回指定的symbol值, 如果没找到，则返回一个新值
+  */
+  let s1 = Symbol.for('foo');
+let s2 = Symbol.for('foo');
 
+console.log('s1 === s2 :', s1 === s2);
 
-const OPERATES = {
-  LAST: 'last',
-  NEXT: 'next',
-  SAVETOLIST: 'saveToList',
-  SAVETODETAIL: 'saveToDetail',
-  CANCEL: 'cancel',
-  FREE: 'free'
-}
-
-const OPERATES = {
-  LAST: Symbol(),
-  NEXT: Symbol(),
-  SAVETOLIST: Symbol(),
-  SAVETODETAIL: Symbol(),
-  CANCEL: Symbol(),
-  FREE: Symbol()
-}
 
 }
