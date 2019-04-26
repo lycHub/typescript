@@ -128,15 +128,12 @@
   Reflect.ownKeys(obj); // [Symbol(a), Symbol(b)]
 }
 
-
 {
   /* 
     Symbol.for()返回指定的symbol值, 如果没找到，则返回一个新值
   */
-  let s1 = Symbol.for('foo');
-let s2 = Symbol.for('foo');
+  let s1 = Symbol.for("foo");
+  let s2 = Symbol.for("foo");
 
-console.log('s1 === s2 :', s1 === s2);
-
-
+  console.log("s1 === s2 :", s1 === s2);
 }
