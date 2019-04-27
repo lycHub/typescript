@@ -1,4 +1,9 @@
-let s1 = Symbol.for('foo');
-let s2 = Symbol.for('foo');
+interface Lengthwise {
+  length: number;
+}
 
-console.log('s1 === s2 :', s1 === s2);
+function getArr<T extends Lengthwise>(value: T, times: number = 5): T[] {
+  return new Array(times).fill(value);
+}
+
+console.log(getArr('str'));

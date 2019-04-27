@@ -1,5 +1,5 @@
 {
-  /* 
+  /*
     Symbol是一种新的数据类型，
     所以不能使用new命令。
     也就是说，由于 Symbol 值不是对象，所以不能添加属性。
@@ -10,7 +10,7 @@
 }
 
 {
-  /* 
+  /*
     为了区分多个symbol, 可以传入参数
     如果 Symbol 的参数是一个对象，就会调用该对象的toString方法，将其转为字符串，
     然后才生成一个 Symbol 值。
@@ -60,7 +60,7 @@
 }
 
 {
-  /* 
+  /*
   仔细观察OPERATES里的值是什么不重要，只要互不相等就行
   所以推荐使用symbol
 */
@@ -106,7 +106,7 @@
 }
 
 {
-  /* 
+  /*
     当作为对象key值时，传统的
     for...in、Object.keys()、Object.getOwnPropertyNames()、JSON.stringify()
     都不会返回Symbol属性名
@@ -129,7 +129,7 @@
 }
 
 {
-  /* 
+  /*
     Symbol.for()返回指定的symbol值, 如果没找到，则返回一个新值
   */
   let s1 = Symbol.for("foo");
