@@ -1,9 +1,3 @@
-interface Lengthwise {
-  length: number;
+window.onmousedown = function(event: MouseEvent) {
+console.log('mouseEvent :', event.clientX);
 }
-
-function getArr<T extends Lengthwise>(value: T, times: number = 5): T[] {
-  return new Array(times).fill(value);
-}
-
-console.log(getArr('str'));
