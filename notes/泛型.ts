@@ -74,7 +74,7 @@
 }
 
 {
-  // 在泛型约束中使用类型参数
+  // 在泛型约束中使用类型参数，keyof返回T所有属性组成的联合类型
   function getProperty<T, K extends keyof T>(obj: T, key: K) {
     return obj[key];
   }

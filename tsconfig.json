@@ -4,6 +4,18 @@
     "module": "es6",
     "target": "es5",
     "allowJs": true,
-    "lib": ["es2015", "dom"]
+    "lib": ["es2015", "dom"],
+    "experimentalDecorators": true,
+    "baseUrl": ".", // 如果paths存在，此项必填
+    "paths": {
+      /* 
+        指定某个非相对模块的查找路径
+        此处映射是相对于"baseUrl",
+        如果baseUrl: "./src",
+        "jquery": ["../node_modules/jquery/dist/jquery"]
+      */
+      "jquery": ["node_modules/jquery/dist/jquery"],
+      "*": ["node_modules/@types", "src/typings"]
+    }
   }
 }
