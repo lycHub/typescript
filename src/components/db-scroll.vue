@@ -16,7 +16,7 @@ export default class Dbscroll extends Vue {
   private scroll!: BScroll;
   @Prop() readonly data!: any[];
   @Prop({ default: true }) readonly click!: boolean;
-  @Prop({ default: true }) readonly mouseWheel: boolean;
+  @Prop({ default: false }) readonly mouseWheel: boolean;
   @Prop({ default: 200 }) readonly refreshDelay: number;
 
   

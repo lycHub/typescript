@@ -1,4 +1,4 @@
-export type MovieShowing = {
+export type MovieIns = {
   name: string;
   total: number;
   movies: Item[];

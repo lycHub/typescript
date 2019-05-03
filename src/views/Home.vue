@@ -18,22 +18,68 @@
         </Dbscroll>
       </div>
     </section>
+
+    <section class="sec">
+      <div class="title">
+        <h2>{{movieFree.name}}</h2>
+        <span>更多</span>
+      </div>
+      <div class="list">
+        <Dbscroll :data="movieFree.movies">
+          <div class="list-wrap van-clearfix">
+            <MovieItem
+              class="item"
+              v-for="item in movieFree.movies"
+              :key="item.id"
+              :item="item"
+            ></MovieItem>
+          </div>
+        </Dbscroll>
+      </div>
+    </section>
+
+    <section class="sec">
+      <div class="title">
+        <h2>{{movieLastest.name}}</h2>
+        <span>更多</span>
+      </div>
+      <div class="list">
+        <Dbscroll :data="movieLastest.movies">
+          <div class="list-wrap van-clearfix">
+            <MovieItem
+              class="item"
+              v-for="item in movieLastest.movies"
+              :key="item.id"
+              :item="item"
+            ></MovieItem>
+          </div>
+        </Dbscroll>
+      </div>
+    </section>
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
 import MovieServe from "../services/movie.service";
-import { MovieShowing, Item } from "@/interfaces";
+import { MovieIns, Item } from "@/interfaces";
 import { setTimeout } from "timers";
 @Component({
   name: "Home"
 })
 export default class Home extends Vue {
-  movieShows = {} as MovieShowing;
+  movieShows = {} as MovieIns;
+  movieFree = {} as MovieIns;
+  movieLastest = {} as MovieIns;
   created() {
-    MovieServe.getMovieShowing().then((res: MovieShowing) => {
+    MovieServe.getMovieIns().then((res: MovieIns) => {
       this.movieShows = res;
+    });
+    MovieServe.getMovieFree().then((res: MovieIns) => {
+      this.movieFree = res;
+    });
+    MovieServe.getMovieLastest().then((res: MovieIns) => {
+      this.movieLastest = res;
     });
   }
 }
