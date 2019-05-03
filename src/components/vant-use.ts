@@ -1,3 +1,5 @@
-/**
- * Created by admin on 2019/5/3.
- */
+import Vue from 'vue';
+import { Button, NavBar, Rate } from 'vant';
+Vue.component(Button.name, Button);
+Vue.component(NavBar.name, NavBar);
+Vue.component(Rate.name, Rate);

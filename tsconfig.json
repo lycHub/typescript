@@ -1,21 +1,46 @@
 {
   "compilerOptions": {
-    "noImplicitAny": true,
-    "module": "es6",
     "target": "es5",
-    "allowJs": true,
-    "lib": ["es2015", "dom"],
+    "module": "esNext",
+    // "strict": true,
+    "strictPropertyInitialization": false,
+    "strictNullChecks": false,
+    "noImplicitAny": false,
+    "jsx": "preserve",
+    "importHelpers": true,
+    "moduleResolution": "node",
     "experimentalDecorators": true,
-    "baseUrl": ".", // 如果paths存在，此项必填
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "sourceMap": true,
+    "baseUrl": ".",
+    /*"types": [
+      "webpack-env"
+    ],*/
     "paths": {
-      /* 
-        指定某个非相对模块的查找路径
-        此处映射是相对于"baseUrl",
-        如果baseUrl: "./src",
-        "jquery": ["../node_modules/jquery/dist/jquery"]
-      */
-      "jquery": ["node_modules/jquery/dist/jquery"],
-      "*": ["node_modules/@types", "src/typings"]
-    }
-  }
+      "@/*": [
+        "src/*"
+      ],
+      "*": [
+        "src/*"
+      ]
+    },
+    "lib": [
+      "esNext",
+      "dom",
+      "dom.iterable",
+      "scripthost",
+      "es2015.promise"
+    ]
+  },
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "src/**/*.vue",
+    "tests/**/*.ts",
+    "tests/**/*.tsx"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }

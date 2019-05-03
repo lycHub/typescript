@@ -1,8 +1,10 @@
 import myJsonp from "@/my-jsonp";
-import {MovieShowing} from "@/types";
+import {MovieShowing, Item, Rating} from "@/interfaces";
 import {apiHost} from "@/configs";
+
 const uri = 'subject_collection/';
-class HomeServe {
+
+class MovieServe {
   getMovieShowing(params = { start:0, count: 8 }): Promise<MovieShowing> {
     return myJsonp(`${apiHost}${uri}movie_showing/items`, 'jsonp1', {
       callback: 'jsonp1',
@@ -15,7 +17,7 @@ class HomeServe {
           return {
             id: item.id,
             title: item.title,
-            rating: item.rating,
+            rating: (item.rating && item.rating.value) || 0,
             coverImg: item.cover.url
           }
         }),
@@ -26,4 +28,4 @@ class HomeServe {
 }
 
 
-export default new HomeServe();
+export default new MovieServe();

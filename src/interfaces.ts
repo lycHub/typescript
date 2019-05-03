@@ -1,16 +1,16 @@
 export type MovieShowing = {
   name: string;
   total: number;
-  movies: MovieItem[];
+  movies: Item[];
 }
 
-export type MovieItem = {
+export type Item = {
   id: number;
   title: string;
-  rating: {
-    count: number;
-    max: number;
-    value: number;
-  };
-  coverImg: string;
+  rating: number;
+  cover: string;
+}
+
+export type Rating = {
+  value: number;
 }
