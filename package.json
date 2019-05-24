@@ -4,13 +4,20 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
     "inspect": "vue-cli-service inspect",
-    "help": "vue-cli-service help"
+    "help": "vue-cli-service help",
+    "build:client": "vue-cli-service build",
+    "build:server": "cross-env WEBPACK_TARGET=node vue-cli-service build --mode server",
+    "build:win": "npm run build:server && move dist\\vue-ssr-server-bundle.json bundle && npm run build:client && move bundle dist\\vue-ssr-server-bundle.json"
   },
   "dependencies": {
     "better-scroll": "^1.15.2",
     "jsonp": "^0.2.1",
+    "koa": "^2.7.0",
+    "koa-router": "^7.4.0",
+    "koa-send": "^5.0.0",
+    "koa-static": "^5.0.0",
+    "koa2-connect-history-api-fallback": "^0.1.2",
     "vant": "^1.6.16",
     "vue": "^2.6.10",
     "vue-class-component": "^7.0.2",
@@ -22,10 +29,14 @@
     "@types/jsonp": "^0.2.0",
     "@vue/cli-plugin-typescript": "^3.7.0",
     "@vue/cli-service": "^3.7.0",
+    "cross-env": "^5.2.0",
     "less": "^3.0.4",
     "less-loader": "^4.1.0",
+    "lodash.merge": "^4.6.1",
     "ts-import-plugin": "^1.5.5",
     "typescript": "^3.4.3",
-    "vue-template-compiler": "^2.5.21"
+    "vue-server-renderer": "^2.6.10",
+    "vue-template-compiler": "^2.5.21",
+    "webpack-node-externals": "^1.7.2"
   }
 }

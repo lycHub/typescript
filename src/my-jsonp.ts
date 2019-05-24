@@ -1,7 +1,12 @@
 import jsonp from 'jsonp';
 import {commonParams} from "@/configs";
-
+import Vue from 'vue';
+const isServer = Vue.prototype.isServer
 export default function myJsonp (url: string, cbName: string, params: Object): Promise<any> {
+  if (isServer) {
+    console.log('isServer :', isServer);
+    return;
+  }
   const trueParams = { ...params, ...commonParams };
   url += (url.indexOf('?') < 0 ? '?' : '&') + param(trueParams);
   return new Promise((resolve, reject) => {
