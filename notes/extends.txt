@@ -1,0 +1,10 @@
+interface ValWithLength {
+  length: number;
+}
+
+// 这里限制住了， T只能传入一个带length属性的值, array、object、string等
+function echoWithLen<T extends ValWithLength>(arg: T): number {
+  return arg.length;
+}
+
+type NonType<T> = T extends null | undefined ? never : T;
